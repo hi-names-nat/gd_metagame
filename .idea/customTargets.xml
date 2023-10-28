@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="e245749b-c8bf-43b9-a241-6a53c2ea83c2" name="Godot Debug" defaultType="TOOL">
+      <configuration id="f819d516-9143-4072-b8ac-5e492c46fe2c" name="Godot Debug">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_Build Godot Debug" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_Clean Godot Debug" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>
