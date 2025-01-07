@@ -1,11 +1,13 @@
 extends CharacterBody3D
 
+var interactable_looked_at: Object
+
 var is_crouching: bool
 var stand_height: float
 
 const CROUCH_HEIGHT = 1.4
 const SPEED = 5.0
-const CROUCH_SPEED = 3.0
+const CROUCH_SPEED = 2.5
 const LOOK_SENSITIVITY = 0.5
 
 func _init() -> void:
@@ -13,12 +15,15 @@ func _init() -> void:
 	
 func _ready() -> void:
 	stand_height = ($CollisionShape3D.shape as CapsuleShape3D).height
+	$Camera3D.rotation = Vector3(0,0,0)
 
 func _process(delta: float) -> void:
 	_calculate_look(delta)
 
 func _physics_process(delta: float) -> void:
 	_calculate_movement(delta)
+	
+	_notify_player_look()
 	
 	if Input.is_action_just_pressed("g_intr"):
 		_notify_interact()
@@ -62,7 +67,15 @@ func _calculate_movement(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	move_and_slide()
 
-# todo: interact/use
+func _notify_player_look() -> void:
+	if $Camera3D/RayCast3D.is_colliding():
+		var obj = $Camera3D/RayCast3D.get_collider()
+		obj.player_lookat()
+		interactable_looked_at = obj
+	elif interactable_looked_at != null:
+		interactable_looked_at.player_stop_look()
+		interactable_looked_at = null
+
 func _notify_interact() -> void:
 	if $Camera3D/RayCast3D.is_colliding():
 		var obj = $Camera3D/RayCast3D.get_collider()

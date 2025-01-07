@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bchdiawm15yw"]
+[gd_scene load_steps=3 format=3 uid="uid://bchdiawm15yw"]
 
 [ext_resource type="PackedScene" uid="uid://dbd8f8ail12dy" path="res://game/player/g_player.tscn" id="1_cn8t6"]
-[ext_resource type="Script" path="res://game/world/g_usable.gd" id="2_rfg2l"]
-[ext_resource type="PackedScene" uid="uid://cdg0b4vllc1p4" path="res://game/world/g_floating_text.tscn" id="3_67d8k"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ui5a2"]
-size = Vector3(1.39258, 1.2998, 1.57251)
+[ext_resource type="PackedScene" uid="uid://g6rpin1hdmdq" path="res://game/world/interactables/description_object.tscn" id="2_cfece"]
 
 [node name="GAreaHouse" type="Node3D"]
 
@@ -14,23 +10,11 @@ use_collision = true
 size = Vector3(11, 0.174072, 12)
 
 [node name="GPlayer" parent="." instance=ExtResource("1_cn8t6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896776, 0.467614, 3.04282)
-
-[node name="usebox" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.474245, 1.31534, 0)
-use_collision = true
-
-[node name="GFloatingText" parent="usebox" instance=ExtResource("3_67d8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625598, 0)
-DiaPassages = Array[String](["This text is really long to see if the typewrite speed is fast enough to be interesting without being boring :)", "This is a test", "Done"])
-
-[node name="UseTrigger" type="StaticBody3D" parent="usebox"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("2_rfg2l")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="usebox/UseTrigger"]
-shape = SubResource("BoxShape3D_ui5a2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896776, 0.44373, 3.04282)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.821637, 0.570011, 0, -0.570011, 0.821637, -0.212709, 4.67894, -0.00893497)
+light_bake_mode = 1
+
+[node name="DescriptionObject" parent="." instance=ExtResource("2_cfece")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000596402, 0.885262, 0.00307322)

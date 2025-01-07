@@ -5,7 +5,7 @@ signal OnTextEnd
 
 @export
 var DiaPassages: Array[String]
-var index: int = 0
+var index: int = -1
 
 var CurrentText: String = ""
 var CurrentCharIdx: int = 0
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func object_interacted() -> void:
 	print("Text triggered via interaction")
-	begin_text()
+	continue_text()
 
 func begin_text():
 	OnTextBegin.emit()
@@ -24,24 +24,22 @@ func begin_text():
 	$Timer.start()
 	
 func continue_text():
+	CurrentText = ""
 	$Timer.stop()
 	index += 1
+	CurrentCharIdx = 0
 	if index < DiaPassages.size():
 		begin_text()
-	else:
-		end_text()
+	else:		end_text()
 	
-func end_text():s
+func end_text():
 	$CurrentText.text = ""
 	OnTextEnd.emit()
 
 func _write_char():
-	print(DiaPassages[index][CurrentCharIdx])
 	CurrentText += DiaPassages[index][CurrentCharIdx]
-	print (CurrentText)
 	$CurrentText.text = CurrentText
 	CurrentCharIdx += 1
 	
 	if (CurrentCharIdx == DiaPassages[index].length()):
-		print("go")
 		$Timer.stop()
