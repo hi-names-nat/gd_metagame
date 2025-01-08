@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c307rqfrs3wy6"]
+
+[ext_resource type="PackedScene" uid="uid://dy5hkowg7afou" path="res://infgame/player/inf_player.tscn" id="1_xtsam"]
+[ext_resource type="Script" path="res://infgame/player/inf_player.gd" id="2_7uiod"]
+
+[node name="InfLevelTest" type="Node2D"]
+
+[node name="InfPlayer" parent="." instance=ExtResource("1_xtsam")]
+position = Vector2(42.1858, 8.91763)
+script = ExtResource("2_7uiod")

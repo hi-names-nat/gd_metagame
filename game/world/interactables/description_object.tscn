@@ -28,11 +28,10 @@ surface_material_override/0 = ExtResource("1_16lul")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 DiaPassages = Array[String](["This text is really long to see if the typewrite speed is fast enough to be interesting without being boring :)", "This is a test", "Done"])
 
-[node name="UseTrigger" type="StaticBody3D" parent="." node_paths=PackedStringArray("Outline")]
+[node name="UseTrigger" type="StaticBody3D" parent="."]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_35yeh")
-Outline = NodePath("../HoverOutline")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UseTrigger"]
 shape = SubResource("BoxShape3D_ui5a2")

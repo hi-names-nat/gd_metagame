@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Metagame_gd"
-run/main_scene="res://game/maps/g_area_house.tscn"
+run/main_scene="res://game/maps/g_area_house_test.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Metagame_gd"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

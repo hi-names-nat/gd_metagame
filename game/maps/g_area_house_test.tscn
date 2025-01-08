@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://bchdiawm15yw"]
+
+[ext_resource type="PackedScene" uid="uid://dbd8f8ail12dy" path="res://game/player/g_player.tscn" id="1_cn8t6"]
+[ext_resource type="Material" uid="uid://dpip4gdun5tc8" path="res://game/world/materials/outline.tres" id="2_i5gc4"]
+[ext_resource type="PackedScene" uid="uid://cdg0b4vllc1p4" path="res://game/world/interactables/g_billboard_text_component.tscn" id="3_tyno2"]
+[ext_resource type="Script" path="res://game/world/interactables/g_use_component.gd" id="4_oaog0"]
+[ext_resource type="ArrayMesh" uid="uid://dnagtykihdadc" path="res://game/world/mesh/cd.obj" id="6_erakk"]
+[ext_resource type="ArrayMesh" uid="uid://f4bep27iiwdc" path="res://game/world/mesh/box_cardboard_full.obj" id="6_p31ip"]
+[ext_resource type="ArrayMesh" uid="uid://cfh7wybwrjddm" path="res://game/world/mesh/monitor.obj" id="7_0ihb8"]
+[ext_resource type="ArrayMesh" uid="uid://bg8fs23tevjvm" path="res://game/world/mesh/computer.obj" id="7_w7r5t"]
+[ext_resource type="ArrayMesh" uid="uid://b42wfmccgts7j" path="res://game/world/mesh/desk.obj" id="8_x4ib6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sj6m4"]
+size = Vector3(0.637329, 0.894043, 0.791992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33v22"]
+size = Vector3(1, 1, 0.545654)
+
+[node name="GAreaHouse" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(11, 0.174072, 12)
+
+[node name="GPlayer" parent="." instance=ExtResource("1_cn8t6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896776, 0.44373, 3.04282)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.821637, 0.570011, 0, -0.570011, 0.821637, -0.212709, 4.67894, -0.00893497)
+light_bake_mode = 1
+
+[node name="Intr_CD" type="Node3D" parent="."]
+transform = Transform3D(0.733168, 0.454866, 0.505531, -0.421432, 0.887329, -0.187198, -0.533722, -0.075799, 0.842256, -3.47323, 0.490972, 3.90417)
+
+[node name="cd" type="MeshInstance3D" parent="Intr_CD"]
+transform = Transform3D(0.689904, -0.120162, -0.713859, 0.0876274, 0.992738, -0.0824188, 0.718578, -0.00569261, 0.695423, 0, 0, 0)
+mesh = ExtResource("6_erakk")
+skeleton = NodePath("../..")
+
+[node name="cd_outline" type="MeshInstance3D" parent="Intr_CD"]
+transform = Transform3D(0.689904, -0.120162, -0.713859, 0.0876274, 0.992738, -0.0824188, 0.718578, -0.00569261, 0.695423, 0, 0, 0)
+visible = false
+mesh = ExtResource("6_erakk")
+surface_material_override/0 = ExtResource("2_i5gc4")
+surface_material_override/1 = ExtResource("2_i5gc4")
+
+[node name="GFloatingText" parent="Intr_CD" instance=ExtResource("3_tyno2")]
+transform = Transform3D(1, 2.6077e-08, 5.96046e-08, 7.45058e-09, 1, -1.49012e-08, 2.98023e-08, 1.49012e-08, 1, -0.0912619, 0.455147, -0.040538)
+DiaPassages = Array[String](["....Huh. A CD?", "Looks like it has a game on it.", "\"Game Proto\"... Wonder where this came from?", "As far as I know, grandpa nor mom had any interest in video games, so where could this be from?", "\"For Josh\"...", "Who's Josh? Ex-Boyfriend?", "Well... I'm damn curious now...", "...What's the harm in just... seeing what's on here?", "There's a computer. I'm pretty sure it has a CD drive."])
+
+[node name="UseComponent" type="StaticBody3D" parent="Intr_CD" node_paths=PackedStringArray("Outlines")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_oaog0")
+Outlines = [NodePath("../cd_outline")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Intr_CD/UseComponent"]
+shape = SubResource("BoxShape3D_sj6m4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.22983, 0.309601, 3.82241)
+
+[node name="BoxCardboardFull" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("6_p31ip")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0137939)
+shape = SubResource("BoxShape3D_33v22")
+
+[node name="Desk" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84682, 0.087036, 0.729973)
+mesh = ExtResource("8_x4ib6")
+
+[node name="Intr_Computer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72906, 1.56317, 0.164339)
+
+[node name="monitor" type="MeshInstance3D" parent="Intr_Computer"]
+mesh = ExtResource("7_0ihb8")
+skeleton = NodePath("../..")
+
+[node name="monitor_outline" type="MeshInstance3D" parent="Intr_Computer"]
+visible = false
+mesh = ExtResource("7_0ihb8")
+surface_material_override/0 = ExtResource("2_i5gc4")
+surface_material_override/1 = ExtResource("2_i5gc4")
+
+[node name="Computer" type="MeshInstance3D" parent="Intr_Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130556, -0.795477, -0.0653917)
+mesh = ExtResource("7_w7r5t")
+skeleton = NodePath("../..")
+
+[node name="Computer_outline" type="MeshInstance3D" parent="Intr_Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130556, -0.795477, -0.0653917)
+visible = false
+mesh = ExtResource("7_w7r5t")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_i5gc4")
+surface_material_override/1 = ExtResource("2_i5gc4")
+
+[node name="GFloatingText" parent="Intr_Computer" instance=ExtResource("3_tyno2")]
+transform = Transform3D(1, 2.6077e-08, 5.96046e-08, 7.45058e-09, 1, -1.49012e-08, 2.98023e-08, 1.49012e-08, 1, 0.0293241, 0.330288, 0.0159889)
+DiaPassages = Array[String](["Wow. What a dinosaur...", "Actually kinda cool. I'll probably keep this.", "No time to mess with it right now though.", "I bet there's baby pictures on here... I'm gonna have a field day with those."])
+
+[node name="UseComponent" type="StaticBody3D" parent="Intr_Computer" node_paths=PackedStringArray("Outlines")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_oaog0")
+Outlines = [NodePath("../monitor_outline"), NodePath("../Computer_outline")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Intr_Computer/UseComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0535278, -0.227783, 0)
+shape = SubResource("BoxShape3D_sj6m4")
