@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dmv4seonbyotk"
+path="res://.godot/imported/fr_him0006.obj-635edc3ff84901a156a33c0a4d9bd219.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fr_him0006.obj-635edc3ff84901a156a33c0a4d9bd219.mesh"]
+
+source_file="res://game/world/mesh/fr_him0006.obj"
+dest_files=["res://.godot/imported/fr_him0006.obj-635edc3ff84901a156a33c0a4d9bd219.mesh", "res://.godot/imported/fr_him0006.obj-635edc3ff84901a156a33c0a4d9bd219.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cw4rylbi3broe"]
+
+[ext_resource type="PackedScene" uid="uid://dbd8f8ail12dy" path="res://game/player/g_player.tscn" id="1_j3c7w"]
+[ext_resource type="PackedScene" uid="uid://cdg0b4vllc1p4" path="res://game/world/interactables/g_billboard_text_component.tscn" id="2_jnq8p"]
+[ext_resource type="PackedScene" uid="uid://bo100t4327o1q" path="res://game/world/interactables/g_usable_component.tscn" id="3_bpa8g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdj7g"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_of4k3"]
+size = Vector3(1, 1.96533, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwo0x"]
+shading_mode = 0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yvuo7"]
+material = SubResource("StandardMaterial3D_mwo0x")
+
+[node name="GAreaMental" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(30, 5, 30)
+material = SubResource("StandardMaterial3D_gdj7g")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+operation = 2
+size = Vector3(29, 4, 29)
+material = SubResource("StandardMaterial3D_gdj7g")
+
+[node name="GPlayer" parent="." instance=ExtResource("1_j3c7w")]
+transform = Transform3D(-0.135352, 0, -0.990798, 0, 1, 0, 0.990798, 0, -0.135352, 12.7838, 0, 11.0246)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.821093, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00756836, 0)
+shape = SubResource("BoxShape3D_of4k3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215358, -0.0721536, -0.108122)
+mesh = SubResource("CapsuleMesh_yvuo7")
+
+[node name="GFloatingText" parent="StaticBody3D" instance=ExtResource("2_jnq8p")]
+transform = Transform3D(-0.135352, 0, -0.990798, 0, 1, 0, 0.990798, 0, -0.135352, 0.613749, 0.407422, 0.397777)
+
+[node name="Area3D" parent="StaticBody3D" instance=ExtResource("3_bpa8g")]
+transform = Transform3D(-0.135352, 0, -0.990798, 0, 1, 0, 0.990798, 0, -0.135352, 0, 0, 0)

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bbvygha7bukp7"]
+
+[ext_resource type="Texture2D" uid="uid://b07nl54vsll2c" path="res://friend/f_grn.png" id="1_c2gip"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+blend_mode = 3
+shading_mode = 0
+albedo_texture = ExtResource("1_c2gip")
+texture_filter = 0

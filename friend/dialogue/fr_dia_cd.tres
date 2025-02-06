@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://mpynaevmv7pn"]
+
+[ext_resource type="Script" path="res://game/world/interactables/g_billboard_passages.gd" id="1_jtq7h"]
+
+[resource]
+script = ExtResource("1_jtq7h")
+Passages = Array[String](["What's that?", "A CD?", "Well, what in the world is THAT doing here?", "Is it yours? ", "...No?", "Well I don't know, but I have a feeling that with time, we'll both learn what it means.", "* He winks at you, though you're not sure how you know that *"])

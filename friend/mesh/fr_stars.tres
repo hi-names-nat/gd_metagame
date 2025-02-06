@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://y0gucsscb7ns"]
+
+[ext_resource type="Texture2D" uid="uid://bv7vagwvg13xv" path="res://friend/mesh/fr_stars.tga" id="1_xsia1"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_xsia1")
+uv1_scale = Vector3(5, 5, 5)
+uv1_offset = Vector3(5, 0, 0)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.09341
+uv2_scale = Vector3(5, 5, 5)

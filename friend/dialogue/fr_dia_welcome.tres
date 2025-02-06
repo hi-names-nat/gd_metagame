@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b2d0b5bf7qbmk"]
+
+[ext_resource type="Script" path="res://game/world/interactables/g_billboard_passages.gd" id="1_04vr6"]
+
+[resource]
+script = ExtResource("1_04vr6")
+Passages = Array[String](["Oh, So you're finally awake.", "Good morning! Hee hee!", "Now, I know you're confused.", "But it's okay! I can explain everything!", "See, you found yourself at a place between two places...", "A thres-...", "A thrash-", "Whatever that thing you call it is.", "Well, you managed to slip yourself between the two options and you ended up here!", "With me!!!"])

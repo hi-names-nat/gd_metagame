@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://mwapmnbbfyeq"]
+
+[ext_resource type="Script" path="res://game/world/interactables/g_billboard_passages.gd" id="1_04vr6"]
+
+[resource]
+script = ExtResource("1_04vr6")
+Passages = Array[String](["....Huh?", "Where am I?", "Fuck. My head.", "Last thing I remember... I...", "Wait. I...", "What's happening?", "...", "OKAY. Okay.", "No. Don't worry about that.", "Right now. I just need to find out where the hell I am.", "I should... look around. I guess.", "Damn, it's dark."])

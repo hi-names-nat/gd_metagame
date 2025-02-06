@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy5hkowg7afou"]
+[gd_scene load_steps=5 format=3 uid="uid://dy5hkowg7afou"]
+
+[ext_resource type="Script" path="res://infgame/player/inf_player.gd" id="1_p4pkn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8nv0"]
 
@@ -9,6 +11,8 @@ gradient = SubResource("Gradient_yne0h")
 width = 10
 
 [node name="InfPlayer" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_p4pkn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_m8nv0")
@@ -17,3 +21,6 @@ shape = SubResource("CapsuleShape2D_m8nv0")
 position = Vector2(0, 1)
 scale = Vector2(1, 24)
 texture = SubResource("GradientTexture1D_auib1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.36

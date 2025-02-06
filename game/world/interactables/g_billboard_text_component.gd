@@ -3,12 +3,14 @@ extends Node3D
 signal OnTextBegin
 signal OnTextEnd
 
-@export
-var DiaPassages: Array[String]
+#array of g_billboard_passages 
+@export var DiaPassages: Resource
 var index: int = -1
 
 var CurrentText: String = ""
 var CurrentCharIdx: int = 0
+
+var line_finished = false
 
 func _ready() -> void:
 	$CurrentText.text = ""
@@ -24,11 +26,12 @@ func begin_text():
 	$Timer.start()
 	
 func continue_text():
+	line_finished = false
 	CurrentText = ""
 	$Timer.stop()
 	index += 1
 	CurrentCharIdx = 0
-	if index < DiaPassages.size():
+	if index < DiaPassages.Passages.size():
 		begin_text()
 	else:		end_text()
 	
@@ -37,9 +40,12 @@ func end_text():
 	OnTextEnd.emit()
 
 func _write_char():
-	CurrentText += DiaPassages[index][CurrentCharIdx]
+	CurrentText += DiaPassages.Passages[index][CurrentCharIdx]
 	$CurrentText.text = CurrentText
 	CurrentCharIdx += 1
 	
-	if (CurrentCharIdx == DiaPassages[index].length()):
+	if (CurrentCharIdx == DiaPassages.Passages[index].length()):
 		$Timer.stop()
+		line_finished = true
+		if line_finished:
+			print("line finished")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://ru6bsxioij00"]
+
+[ext_resource type="Texture2D" uid="uid://bysvoba57pkfy" path="res://friend/textbox.png" id="1_0c6q7"]
+[ext_resource type="FontFile" uid="uid://bnwdtkdbewr2i" path="res://infgame/ChevyRay - Thinstix.ttf" id="2_x42ip"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4huv7"]
+font = ExtResource("2_x42ip")
+font_size = 32
+shadow_size = 0
+
+[node name="InfUiDialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 447.0
+offset_bottom = 128.0
+texture = ExtResource("1_0c6q7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 15.0
+offset_right = 424.0
+offset_bottom = 109.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "LOL Long text long texzt LOL Long text long texzt "
+label_settings = SubResource("LabelSettings_4huv7")
+vertical_alignment = 3
+autowrap_mode = 3
+max_lines_visible = 2

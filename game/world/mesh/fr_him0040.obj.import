@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b78d3r7wy5q8u"
+path="res://.godot/imported/fr_him0040.obj-4fa4a6eb450a88b525454c746ccc431b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fr_him0040.obj-4fa4a6eb450a88b525454c746ccc431b.mesh"]
+
+source_file="res://game/world/mesh/fr_him0040.obj"
+dest_files=["res://.godot/imported/fr_him0040.obj-4fa4a6eb450a88b525454c746ccc431b.mesh", "res://.godot/imported/fr_him0040.obj-4fa4a6eb450a88b525454c746ccc431b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
